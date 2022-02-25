@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "422403001268",
+    "project_id": "quizsensation-a65a3",
+    "storage_bucket": "quizsensation-a65a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422403001268:android:c7569b1a4ab149dc97c0e1",
+        "android_client_info": {
+          "package_name": "com.example.app_quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422403001268-4bthkelj4vnj5aeostbh61bnmoalkp8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgP_pMNiN9wB2vfB2Fqygw35dzhdRfXVo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422403001268-4bthkelj4vnj5aeostbh61bnmoalkp8p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
