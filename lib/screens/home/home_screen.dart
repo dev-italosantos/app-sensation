@@ -12,7 +12,10 @@ import 'widgets/appbar/app_bar_widget.dart';
 import 'widgets/level_button/level_ button_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key,}) : super(key: key);
+  const HomeScreen({
+    Key? key,
+  }) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -33,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {});
     });
 
-
     controller.getUser();
     controller.getQuizzes();
     controller.stateNotifer.addListener(() {
@@ -52,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(height: 24),
+              const SizedBox(height: 24 / 2),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -68,105 +70,103 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               const SizedBox(height: 24),
+              Expanded(
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: quizStream,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return const Text('Something went wrong');
+                      }
 
-            Expanded(
-              child: StreamBuilder<QuerySnapshot>(
-                  stream: quizStream,
-                  builder: (BuildContext context,
-                      AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (snapshot.hasError) {
-                      return const Text('Something went wrong');
-                    }
-
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
-                        child: Row(
-                          children: const [
-                            Text("Loading"),
-                            Center(
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                    AppColors.darkGreen),
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: Row(
+                            children: const [
+                              Text("Loading"),
+                              Center(
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      AppColors.darkGreen),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-
-                    return GestureDetector(
-                      onTap: () {
-                        final quizId = snapshot.data!.docs.toString();
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PlayAnswer(quizId),
+                            ],
                           ),
                         );
-                      },
-                      child: Flexible(
-                        flex: 1,
-                        fit: FlexFit.tight,
-                        child: GridView.count(
-                            childAspectRatio: 1.0,
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 18,
-                            mainAxisSpacing: 18,
-                            children: snapshot.data!.docs
-                                .map((DocumentSnapshot document) {
-                              Map<String, dynamic> data =
-                              document.data()! as Map<String, dynamic>;
-                              return Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      color: Colors.black45,
-                                      offset: Offset(0.0, 10.0),
-                                      blurRadius: 10.0,
-                                    ),
-                                  ],
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Image.network(
-                                      data['quizImageUrl'],
-                                      width: 80,
-                                    ),
-                                    const SizedBox(
-                                      height: 24 / 2,
-                                    ),
-                                    Text(
-                                      data['quizTitle'],
-                                      style: GoogleFonts.openSans(
-                                        textStyle: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      data['quizDesc'],
-                                      style: GoogleFonts.openSans(
-                                        textStyle: const TextStyle(
-                                          color: Colors.black54,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }).toList()),
-                      ),
-                    );
-                  }),
-            ),
+                      }
 
+                      return GestureDetector(
+                        onTap: () {
+                          final quizId = snapshot.data!.docs.toString();
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PlayAnswer(quizId),
+                            ),
+                          );
+                        },
+                        child: Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: GridView.count(
+                              childAspectRatio: 1.0,
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 18,
+                              mainAxisSpacing: 18,
+                              children: snapshot.data!.docs
+                                  .map((DocumentSnapshot document) {
+                                Map<String, dynamic> data =
+                                    document.data()! as Map<String, dynamic>;
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black45,
+                                        offset: Offset(0.0, 10.0),
+                                        blurRadius: 10.0,
+                                      ),
+                                    ],
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Image.network(
+                                        data['quizImageUrl'],
+                                        width: 80,
+                                      ),
+                                      const SizedBox(
+                                        height: 24 / 2,
+                                      ),
+                                      Text(
+                                        data['quizTitle'],
+                                        style: GoogleFonts.openSans(
+                                          textStyle: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        data['quizDesc'],
+                                        style: GoogleFonts.openSans(
+                                          textStyle: const TextStyle(
+                                            color: Colors.black54,
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }).toList()),
+                        ),
+                      );
+                    }),
+              ),
               const SizedBox(height: 24),
             ],
           ),
@@ -203,7 +203,6 @@ class CardTest extends StatefulWidget {
   }) : super(key: key);
 
   final Stream<QuerySnapshot<Object?>> quizStream;
-
 
   @override
   State<CardTest> createState() => _CardTestState();
