@@ -80,21 +80,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       }
 
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(
-                          child: Row(
-                            children: const [
-                              Text("Loading"),
-                              Center(
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                      AppColors.darkGreen),
-                                ),
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: const [
+                            Text("Loading"),
+                            Center(
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    AppColors.darkGreen),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         );
                       }
-
                       return GestureDetector(
                         onTap: () {
                           final quizId = snapshot.data!.docs.toString();
@@ -134,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     children: <Widget>[
                                       Image.network(
                                         data['quizImageUrl'],
-                                        width: 80,
+                                        width: 70,
                                       ),
                                       const SizedBox(
                                         height: 24 / 2,
