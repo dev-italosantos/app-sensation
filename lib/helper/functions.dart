@@ -7,8 +7,8 @@ class HelperFunctioncs {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setBool(userLoggedInKey, isLoggedin);
   }
-  static Future<bool?> getUserLoggedInDetails() async {
+  static Future<bool> getUserLoggedInDetails() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return preferences.getBool(userLoggedInKey);
+    return preferences.getBool(userLoggedInKey) ?? false;
   }
 }

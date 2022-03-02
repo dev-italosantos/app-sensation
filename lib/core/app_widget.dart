@@ -12,12 +12,24 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends State<AppWidget> {
 
+  bool isUserLoggedIn = false;
+
+  @override
+  void initState() {
+    checkUserLoggedInStatus();
+    super.initState();
+  }
+
+  checkUserLoggedInStatus() async {
+    await HelperFunctioncs.getUserLoggedInDetails().then((value) {
+      setState(() {
+        isUserLoggedIn = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: "App Quiz",
-      debugShowCheckedModeBanner: false,
-      home: SplashPage(),
-    );
+    return isUserLoggedIn ? const HomeScreen() : const SplashPage();
   }
 }

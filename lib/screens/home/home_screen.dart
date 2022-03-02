@@ -78,19 +78,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (snapshot.hasError) {
                         return const Text('Something went wrong');
                       }
-
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
-                            Text("Loading"),
-                            Center(
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                    AppColors.darkGreen),
-                              ),
-                            ),
-                          ],
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(AppColors.darkGreen),
+                          ),
                         );
                       }
                       return GestureDetector(
