@@ -56,12 +56,12 @@ class AppBarWidget extends PreferredSize {
 }
 
 final List<String> imgList = [
-  'https://img.icons8.com/doodle/344/coronavirus.png',
-  'https://img.icons8.com/doodle/344/coronavirus.png',
-  'https://img.icons8.com/doodle/344/coronavirus.png',
-  'https://img.icons8.com/doodle/344/coronavirus.png',
-  'https://img.icons8.com/doodle/344/coronavirus.png',
-  'https://img.icons8.com/doodle/344/coronavirus.png',
+  'https://img.icons8.com/external-flat-adri-ansyah/344/external-covid19-corona-virus-flat-adri-ansyah-25.png',
+  'https://img.icons8.com/external-flat-adri-ansyah/344/external-covid19-corona-virus-flat-adri-ansyah-6.png',
+  'https://img.icons8.com/external-flat-adri-ansyah/344/external-covid19-corona-virus-flat-adri-ansyah-2.png',
+  'https://img.icons8.com/external-flat-adri-ansyah/344/external-covid19-corona-virus-flat-adri-ansyah-12.png',
+  'https://img.icons8.com/external-flat-adri-ansyah/344/external-covid19-corona-virus-flat-adri-ansyah-5.png',
+  'https://img.icons8.com/external-flat-adri-ansyah/344/external-covid19-corona-virus-flat-adri-ansyah-18.png',
 ];
 
 final List<Widget> imageSliders = imgList
