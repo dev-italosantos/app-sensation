@@ -6,9 +6,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(const MaterialApp(
-    title: "App Quiz",
-    debugShowCheckedModeBanner: false,
-    home: AppWidget(),
-  ));
+  runApp(
+    const MaterialApp(
+      title: "App Quiz",
+      debugShowCheckedModeBanner: false,
+      home: AppWidget(),
+    ),
+  );
 }

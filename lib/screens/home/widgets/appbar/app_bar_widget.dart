@@ -36,6 +36,15 @@ class AppBarWidget extends PreferredSize {
                           ],
                         ),
                       ),
+                      Container(
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.logout,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -57,49 +66,49 @@ final List<String> imgList = [
 
 final List<Widget> imageSliders = imgList
     .map((item) => Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black45,
-              offset: Offset(0.0, 10.0),
-              blurRadius: 10.0,
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 2,
-                child:Image.network(item, fit: BoxFit.cover, width: 1000.0)
-              ),
-              Expanded(
-                flex: 3,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 24),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'If you feel sick with any of covid-19 symptoms please call or SMS us immediately for help',
-                        style: AppTextStyles.body,
-                      )
-                    ],
-                  ),
+          padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black45,
+                  offset: Offset(0.0, 10.0),
+                  blurRadius: 10.0,
                 ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                      flex: 2,
+                      child: Image.network(item,
+                          fit: BoxFit.cover, width: 1000.0)),
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 24),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'If you feel sick with any of covid-19 symptoms please call or SMS us immediately for help',
+                            style: AppTextStyles.body,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-    ))
+        ))
     .toList();
 
 class ComplicatedImageDemo extends StatelessWidget {
@@ -109,7 +118,9 @@ class ComplicatedImageDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const SizedBox(height: 80,),
+        const SizedBox(
+          height: 80,
+        ),
         CarouselSlider(
           options: CarouselOptions(
             height: 140.0,
