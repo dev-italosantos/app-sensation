@@ -3,6 +3,7 @@ import 'package:app_quiz/screens/challenge/widgets/answer/play_answer.dart';
 import 'package:app_quiz/screens/challenge/widgets/quiz/create_quiz.dart';
 import 'package:app_quiz/screens/home/home_controller.dart';
 import 'package:app_quiz/screens/home/home_state.dart';
+import 'package:app_quiz/shared/services/auth/auth.dart';
 import 'package:app_quiz/shared/services/database/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final controller = HomeController();
+
   final DatabaseServices _databaseServices = DatabaseServices();
 
   late Stream<QuerySnapshot> quizStream;
@@ -37,10 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
 
     controller.getUser();
-    controller.getQuizzes();
-    controller.stateNotifer.addListener(() {
-      setState(() {});
-    });
+
   }
 
   @override
