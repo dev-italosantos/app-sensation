@@ -1,11 +1,12 @@
 import 'package:app_quiz/core/core.dart';
 import 'package:app_quiz/shared/models/user_model.dart';
+import 'package:app_quiz/shared/services/auth/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class AppBarWidget extends PreferredSize {
   final UserModel user;
-
   AppBarWidget({Key? key, required this.user})
       : super(
           key: key,
@@ -38,7 +39,9 @@ class AppBarWidget extends PreferredSize {
                       ),
                       Container(
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            await FirebaseAuth.instance.signOut();
+                          },
                           icon: const Icon(
                             Icons.logout,
                             color: Colors.white,
